@@ -338,7 +338,7 @@ DEPENDENCIES
   country_select
   debug (~> 1.11)
   devise (~> 4.9)
-  error_highlight (>= 0.4.0)
+  error_highlight (= 0.7.0)
   importmap-rails (~> 2.1)
   irb (~> 1.15, >= 1.15.2)
   jbuilder

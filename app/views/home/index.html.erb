@@ -27,6 +27,19 @@
       right: 20px;
       z-index: 10;
     }
+
+    .create-job-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .create-job-btn:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -41,24 +54,27 @@
       </div>
 
       <!-- Language Flags (UK and Germany) -->
-     <!-- Language Flags (UK and Germany) -->
-
+      <div class="flex items-center space-x-4">
+        <%= link_to image_tag('flags/uk.png', alt: 'English', class: 'flag'), url_for(locale: 'en') %>
+        <%= link_to image_tag('flags/de.png', alt: 'Deutsch', class: 'flag'), url_for(locale: 'de') %>
+      </div>
 
       <!-- Authentication buttons (Login/Logout) -->
       <div class="auth-buttons">
-      <% if current_user %>
-  <span class="welcome-msg text-black">Eingeloggt als: <%= current_user.name %></span>
- <%= form_with url: destroy_user_session_path(locale: I18n.locale), method: :delete, local: true do %>
-    <%= submit_tag "Log Out", class: "logout-button" %>
-  <% end %>
-<% else %>
-  <%= link_to "Sign Up", new_user_registration_path(locale: I18n.locale), class: "auth-button signup-button bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" %>
-  <%= link_to "Log In", new_user_session_path(locale: I18n.locale), class: "auth-button login-button bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700" %>
-<% end %>
-        <div class="flex items-center space-x-4">
-  <%= link_to image_tag('flags/uk.png', alt: 'English', class: 'flag'), url_for(locale: 'en') %>
-  <%= link_to image_tag('flags/de.png', alt: 'Deutsch', class: 'flag'), url_for(locale: 'de') %>
-</div>
+        <% if current_user %>
+          <span class="welcome-msg text-black">Logged in as: <%= current_user.name %></span>
+
+          <!-- Create Job Button (Visible only when logged in) -->
+          <%= link_to 'Create Job', new_job_path, class: 'create-job-btn' %>
+
+          <!-- Log Out Button -->
+          <%= form_with url: destroy_user_session_path(locale: I18n.locale), method: :delete, local: true do %>
+            <%= submit_tag "Log Out", class: "logout-button bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700" %>
+          <% end %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path(locale: I18n.locale), class: "auth-button signup-button bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" %>
+          <%= link_to "Log In", new_user_session_path(locale: I18n.locale), class: "auth-button login-button bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700" %>
+        <% end %>
       </div>
     </div>
   </nav>
