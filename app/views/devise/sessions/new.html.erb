@@ -1,0 +1,24 @@
+<div class="login-container">
+  <h1><%= t("Welcome Back!") %></h1>
+
+  <%= form_with(scope: :user, url: user_session_path, local: true, class: "login-form") do |form| %>
+    <div class="form-group">
+      <%= form.label :email, t("login.email") %>
+      <%= form.email_field :email, class: "form-control", required: true, autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password, t("login.password") %>
+      <%= form.password_field :password, class: "form-control", required: true, autocomplete: "off" %>
+    </div>
+
+    <div class="form-actions">
+      <%= form.submit t("login.submit"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <p class="signup-link">
+    <%= t("login.no_account? ") %>
+    <%= link_to t("login.signup_here"), new_user_registration_path(locale: I18n.locale) %>
+  </p>
+</div>

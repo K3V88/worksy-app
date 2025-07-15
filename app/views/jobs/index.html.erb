@@ -1,0 +1,11 @@
+<h1>Available Jobs</h1>
+
+<% @jobs.each do |job| %>
+  <div class="job">
+    <h2><%= link_to job.title, job_path(job) %></h2>
+    <p><%= truncate(job.description, length: 100) %></p>
+    <p>Posted by <%= job.user.name %></p>
+  </div>
+<% end %>
+
+<%= link_to 'Post a New Job', new_job_path, class: 'btn btn-primary' %>

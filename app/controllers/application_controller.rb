@@ -1,16 +1,24 @@
 class ApplicationController < ActionController::Base
-  # Set the locale before every action
-  before_action :set_locale
+  # Devise configuration
+  before_action :set_locale, :configure_permitted_parameters, if: :devise_controller?
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name, :role, :category, :custom_category ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :name, :role, :category, :custom_category ])
   end
 
-  helper_method :current_user  # Make current_user available in views
+  def after_sign_in_path_for(resource)
+    root_path(locale: I18n.locale)
+  end
+
+  def after_sign_up_path_for(resource)
+    root_path(locale: I18n.locale)
+  end
 
   private
 
-  # Set the locale based on the URL parameter or default to 'en'
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
