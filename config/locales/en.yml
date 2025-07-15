@@ -27,5 +27,32 @@
 #       "yes": yup
 #       enabled: "ON"
 
+
 en:
-  hello: "Hello world"
+  signup:
+    title: "Create Your Account"
+    name: "Full name or company"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Repeat password"
+    role_label: "I am..."
+    role_customer: "Looking for services"
+    role_provider: "Offering services"
+    category_label: "What services do you offer?"
+    other_category: "Or type your own..."
+    submit: "Sign Up"
+    categories:
+      painter: "Painter"
+      electrician: "Electrician"
+      plumber: "Plumber"
+      carpenter: "Carpenter"
+      landscaper: "Landscaper"
+      tiler: "Tiler"
+      roofer: "Roofer"
+      cleaner: "Cleaner"
+      floor_installer: "Floor Installer"
+      handyman: "General Handyman"
+
+  login:
+    submit: "Log In"
+    no_account: "No account?"

@@ -1,0 +1,124 @@
+.signup-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 2rem;
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+.signup-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.signup-form input,
+.signup-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #27ae60;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+  background-color: #219150;
+}
+
+.custom-category {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+
+.language-switcher {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.language-switcher img {
+  margin-left: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.locale-switcher {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.flag-link {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  text-decoration: none;
+}
+
+.auth-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.auth-button {
+  display: inline-flex;
+  justify-content: center;  /* horizontal centering */
+  align-items: center;      /* vertical centering */
+  padding: 0.5rem 1rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;      /* prevent text from wrapping */
+  height: 2.5rem;           /* consistent button height */
+  text-decoration: none;
+}
+.login-button {
+  background-color: #007bff;
+}
+
+.login-button:hover {
+  background-color: #0069d9;
+  transform: translateY(-1px);
+}
+
+.logout-button {
+  background-color: #dc3545;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}

@@ -1,18 +1,79 @@
-<!-- app/views/home/index.html.erb -->
-<div class="welcome-page">
-  <h1>Willkommen bei <span class="highlight">Worksy</span>!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worksy</title>
 
-  <p class="lead">
-    Worksy bringt Handwerksbetriebe und neue Kunden zusammen – ganz einfach, schnell und online.
-    Egal ob Malerarbeiten, Sanitär, Elektrik oder Renovierungen – hier finden Betriebe passende Aufträge
-    und Kunden die besten Fachleute.
-  </p>
+  <!-- Use Rails helpers to include stylesheets and JavaScript -->
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 
-  <img src="https://images.unsplash.com/photo-1581090700227-1e8a6f130d85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-       alt="Handwerker bei der Arbeit"
-       class="hero-image">
+  <style>
+    .flag {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
 
-  <div class="cta-button">
-    <a href="#signup">Jetzt kostenlos registrieren</a>
-  </div>
+    .flag:hover {
+      transform: scale(1.2);
+    }
+
+    .auth-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar with Language Flags -->
+  <nav class="bg-gray-800 p-4 fixed w-full z-10 top-0 left-0">
+    <div class="container mx-auto flex justify-between items-center">
+
+      <!-- Branding -->
+      <div class="text-white text-2xl font-semibold">
+        <a href="/">Worksy LOGO</a>
+      </div>
+
+      <!-- Language Flags (UK and Germany) -->
+     <!-- Language Flags (UK and Germany) -->
+
+
+      <!-- Authentication buttons (Login/Logout) -->
+      <div class="auth-buttons">
+      <% if current_user %>
+  <span class="welcome-msg text-white">Eingeloggt als: <%= current_user.name %></span>
+  <%= form_with url: logout_path, method: :delete, local: true do %>
+    <%= submit_tag "Log Out", class: "logout-button" %>
+  <% end %>
+<% else %>
+  <%= link_to "Sign Up", signup_path(locale: I18n.locale), class: "auth-button signup-button bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" %>
+  <%= link_to "Log In", login_path(locale: I18n.locale), class: "auth-button login-button bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700" %>
+<% end %>
+        <div class="flex items-center space-x-4">
+  <%= link_to image_tag('flags/uk.png', alt: 'English', class: 'flag'), url_for(locale: 'en') %>
+  <%= link_to image_tag('flags/de.png', alt: 'Deutsch', class: 'flag'), url_for(locale: 'de') %>
 </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Welcome Page Content -->
+  <div class="welcome-page mt-24 px-6 py-12 bg-gray-100">
+    <h1 class="text-4xl font-bold mb-4 text-center text-gray-800">
+      Willkommen bei <span class="highlight text-blue-600">Worksy</span>!
+    </h1>
+    <p class="lead text-lg text-center text-gray-700">
+      Worksy bringt Handwerksbetriebe und neue Kunden zusammen – ganz einfach, schnell und online.
+      Egal ob Malerarbeiten, Sanitär, Elektrik oder Renovierungen – hier finden Betriebe passende Aufträge
+      und Kunden die besten Fachleute.
+    </p>
+  </div>
+
+</body>
+</html>

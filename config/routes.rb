@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
-  get 'home/index'
-  root "home#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "sessions/new"
+  get "sessions/create"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+    scope "(:locale)", locale: /en|de/ do
+    # Signup routes
+    get "signup", to: "users#new", as: :signup
+    post "users", to: "users#create", as: :users
+    # Login routes
+    get "/login", to: "sessions#new", as: "login"
+    post "/login", to: "sessions#create"
+    delete "/logout", to: "sessions#destroy", as: "logout"
 
-  # Render dynamic PWA files from app/views/pwa/*
-  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+    # Homepage
+    root "home#index"
+    get "home/index", to: "home#index"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+    get "up" => "rails/health#show", as: :rails_health_check
+    get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+    get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  end
 end

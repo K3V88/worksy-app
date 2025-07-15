@@ -1,0 +1,73 @@
+<div class="signup-container">
+
+  <h1><%= ("Sign Up") %></h1>
+
+  <%= form_with(model: @user, url: users_path, local: true, class: "signup-form") do |form| %>
+    <div class="form-group">
+      <%= form.label :name, t("signup.name") %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email, t("signup.email") %>
+      <%= form.email_field :email %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password, t("signup.password") %>
+      <%= form.password_field :password %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password_confirmation, t("signup.password_confirmation") %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :role, t("signup.role_label") %>
+      <%= form.select :role, [
+        t("signup.role_customer"),
+        t("signup.role_provider")
+      ], {}, class: "role-select" %>
+    </div>
+
+    <div class="form-group" id="category-group" style="display: none;">
+      <%= form.label :category, t("signup.category_label") %>
+      <%= form.select :category, [
+        t("signup.categories.painter"),
+        t("signup.categories.electrician"),
+        t("signup.categories.plumber"),
+        t("signup.categories.carpenter"),
+        t("signup.categories.landscaper"),
+        t("signup.categories.tiler"),
+        t("signup.categories.roofer"),
+        t("signup.categories.cleaner"),
+        t("signup.categories.floor_installer"),
+        t("signup.categories.handyman")
+      ], { prompt: "" }, class: "category-select" %>
+      <%= form.text_field :custom_category, placeholder: t("signup.other_category"), class: "custom-category" %>
+    </div>
+
+    <div class="form-actions">
+      <%= form.submit t("signup.submit"), class: "signup-button" %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  // Show/hide category dropdown based on selected role
+  document.addEventListener("DOMContentLoaded", () => {
+    const roleSelect = document.querySelector(".role-select");
+    const categoryGroup = document.getElementById("category-group");
+
+    if (roleSelect && categoryGroup) {
+      const toggleCategory = () => {
+        const providerText = "<%= j t('signup.role_provider') %>";
+        categoryGroup.style.display = roleSelect.value === providerText ? "block" : "none";
+      };
+
+      toggleCategory();
+      roleSelect.addEventListener("change", toggleCategory);
+    }
+  });
+</script>

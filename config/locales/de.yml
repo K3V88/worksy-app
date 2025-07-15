@@ -1,0 +1,27 @@
+de:
+    signup:
+    title: "Erstelle deinen Account"
+    name: "Vollständiger Name oder Firma"
+    email: "E-Mail"
+    password: "Passwort"
+    password_confirmation: "Passwort wiederholen"
+    role_label: "Ich bin..."
+    role_customer: "Ich suche Dienstleistungen"
+    role_provider: "Ich biete Dienstleistungen an"
+    category_label: "Welche Dienstleistungen bietest du an?"
+    other_category: "Oder gib deine eigene ein..."
+    submit: "Registrieren"
+    categories:
+    painter: "Maler"
+    electrician: "Elektriker"
+    plumber: "Klempner"
+    carpenter: "Tischler"
+    landscaper: "Landschaftsgärtner"
+    tiler: "Fliesenleger"
+    roofer: "Dachdecker"
+    cleaner: "Reinigungskraft"
+    floor_installer: "Bodenverleger"
+    handyman: "Allround-Handwerker"
+    helpers:
+    submit:
+    logout: "Abmelden"

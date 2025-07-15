@@ -4,6 +4,7 @@
   font-family: 'Helvetica Neue', sans-serif;
   background-color: #f5f7fa;
   color: #333;
+  padding-top: 120px;
 }
 
 .welcome-page h1 {
@@ -41,4 +42,45 @@
   border-radius: 8px;
   font-size: 1.1rem;
   box-shadow: 0 2px 10px rgba(0, 123, 255, 0.3);
+}
+
+.auth-controls {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.locale-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.flag-link {
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.flag-link:hover {
+  transform: scale(1.2);
+}
+
+.flag {
+  width: 132px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.img {
+  width: 40px;  /* Adjust this value to set the width */
+  height: 40px; /* Adjust this value to set the height */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.img:hover {
+  transform: scale(1.2); /* Optional: Enlarge the image on hover */
 }
