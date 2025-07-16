@@ -1,0 +1,95 @@
+.container {
+  max-width: 1200px;  /* Adjust max width as needed */
+  margin: 0 auto;     /* This will center the container */
+  padding: 20px;      /* Optional, adds padding inside the container */
+  text-align: center; /* Centers text inside the container */
+}
+
+.page-title {
+  text-align: center; /* Centers the title */
+  margin-bottom: 20px; /* Adds space below the title */
+  margin-top: 20px;
+}
+
+.job-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* Centers job boxes horizontally */
+  gap: 20px;                /* Adds space between the job boxes */
+}
+
+.job-box {
+  width: 350px;           /* Set a fixed width for the job boxes */
+  box-sizing: border-box; /* Ensures padding and margin are included in the width */
+  border: 1px solid rgba(0, 123, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.job-ad {
+  width: 400px;
+  height: auto;         /* Set a fixed width for the job boxes */
+  box-sizing: border-box; /* Ensures padding and margin are included in the width */
+  border: 1px solid rgba(0, 123, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 20px;    /* Centers the job ad box */
+}
+
+.btn-narrow {
+  width: auto;
+  display: flex;
+  -ms-flex-align: baseline;
+  margin-top: 20px;  /* You can adjust this margin value */
+
+}
+
+.custom-width {
+  width: 50% !important;
+
+}
+
+.custom-width {
+  width: 100px;
+  height: 54px;
+
+}
+
+.job-box {
+  transition: transform 0.2s ease-in-out;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.job-box:hover {
+  transform: scale(1.05);
+}
+
+/* Ensure all job boxes are equal in height and aligned */
+.card-body {
+  flex-grow: 0; /* Prevents the card body from expanding */
+  padding: 1.25rem;
+}
+
+/* Ensures the job description doesn't overflow */
+.card-text.text-muted {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.job-image {
+  height: 200px; /* Set your desired height here */
+  object-fit: cover; /* Ensures the image fills the space while maintaining aspect ratio */
+  width: 100%; /* Makes sure the image takes the full width of the container */
+}
+
+.card-img-top img {
+  width: 100%; /* Ensures the image takes the full width of the container */
+  max-height: 200px;
+  object-fit: cover; /* Ensures the image covers the container and maintains its aspect ratio */
+  }

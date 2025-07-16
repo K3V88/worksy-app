@@ -45,39 +45,7 @@
 <body>
 
   <!-- Navbar with Language Flags -->
-  <nav class="bg-gray-800 p-4 fixed w-full z-10 top-0 left-0">
-    <div class="container mx-auto flex justify-between items-center">
 
-      <!-- Branding -->
-      <div class="text-white text-2xl font-semibold">
-        <a href="/">Worksy LOGO</a>
-      </div>
-
-      <!-- Language Flags (UK and Germany) -->
-      <div class="flex items-center space-x-4">
-        <%= link_to image_tag('flags/uk.png', alt: 'English', class: 'flag'), url_for(locale: 'en') %>
-        <%= link_to image_tag('flags/de.png', alt: 'Deutsch', class: 'flag'), url_for(locale: 'de') %>
-      </div>
-
-      <!-- Authentication buttons (Login/Logout) -->
-      <div class="auth-buttons">
-        <% if current_user %>
-          <span class="welcome-msg text-black">Logged in as: <%= current_user.name %></span>
-
-          <!-- Create Job Button (Visible only when logged in) -->
-          <%= link_to 'Create Job', new_job_path, class: 'create-job-btn' %>
-
-          <!-- Log Out Button -->
-          <%= form_with url: destroy_user_session_path(locale: I18n.locale), method: :delete, local: true do %>
-            <%= submit_tag "Log Out", class: "logout-button bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700" %>
-          <% end %>
-        <% else %>
-          <%= link_to "Sign Up", new_user_registration_path(locale: I18n.locale), class: "auth-button signup-button bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" %>
-          <%= link_to "Log In", new_user_session_path(locale: I18n.locale), class: "auth-button login-button bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700" %>
-        <% end %>
-      </div>
-    </div>
-  </nav>
 
   <!-- Welcome Page Content -->
   <div class="welcome-page mt-24 px-6 py-12 bg-gray-100">

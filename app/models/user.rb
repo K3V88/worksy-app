@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true
+  has_many :jobs, dependent: :destroy
 
   # Devise handles password presence and length validation
 end

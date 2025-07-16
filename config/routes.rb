@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /en|de/ do
+    # scope "(:locale)", locale: /en|de/ do
     # Devise routes with locale prefix
     devise_for :users, path: "", path_names: {
       sign_in: "login",
@@ -10,9 +10,11 @@ Rails.application.routes.draw do
     # Homepage
     root "home#index"
     get "home/index", to: "home#index"
-
-    # Resources
     resources :jobs
+  # Resources
+  resources :users do
+    resources :jobs, only: [ :index ], controller: "user_jobs"
+
     get "sessions/new"
     get "sessions/create"
 

@@ -1,11 +1,41 @@
-<h1>Available Jobs</h1>
+<h1 class="page-title text-center mb-5">Available Jobs</h1>
 
-<% @jobs.each do |job| %>
-  <div class="job">
-    <h2><%= link_to job.title, job_path(job) %></h2>
-    <p><%= truncate(job.description, length: 100) %></p>
-    <p>Posted by <%= job.user.name %></p>
+<div class="container">
+  <div class="row">
+    <% @jobs.each do |job| %>
+      <div class="col-md-4 mb-4 d-flex justify-content-center">
+        <div class="job-box card shadow-sm w-100" style="border-radius: 8px;">
+          <!-- Job Image -->
+          <% if job.image.attached? %>
+            <div class="card-img-top" style="height: 200px; overflow: hidden;">
+              <%= image_tag job.image, class: 'img-fluid job-image', alt: 'Job Image', style: 'height: 100%; width: 100%; object-fit: cover;' %>
+            </div>
+          <% end %>
+
+          <!-- Job Title and Description -->
+          <div class="card-body p-3 d-flex flex-column">
+            <h4 class="card-title text-truncate" style="font-size: 1.25rem; font-weight: bold;">
+              <%= link_to job.title, job_path(job), class: 'text-dark' %>
+            </h4>
+
+            <!-- Job Description Preview -->
+            <p class="card-text text-muted">
+              <%= truncate(job.description, length: 100) %>
+            </p>
+
+            <!-- Posted by (at the bottom) -->
+            <p class="card-text text-muted mt-auto">
+              <strong>Posted by:</strong> <%= job.user.name %>
+            </p>
+          </div>
+
+          <!-- Add an empty space to ensure cards have equal height -->
+          <div class="flex-grow-1"></div>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
 
-<%= link_to 'Post a New Job', new_job_path, class: 'btn btn-primary' %>
+  <!-- Button to post a new job -->
+  <%= link_to 'Post a New Job', new_job_path, class: 'btn btn-primary btn-block btn-narrow mt-4' %>
+</div>

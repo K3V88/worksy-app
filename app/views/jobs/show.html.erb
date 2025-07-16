@@ -1,0 +1,37 @@
+<!-- Job Ad Content (Show Page) -->
+<div class="job-ad d-flex flex-column" style="padding-bottom: 1rem; height: auto; overflow: hidden;">
+  <div>
+    <h1 class="mb-4 text-center"><%= @job.title %></h1>
+    <p><%= @job.description %></p>
+
+    <% if @job.location.present? %>
+      <p><strong>Location:</strong> <%= @job.location %></p>
+    <% end %>
+
+    <% if @job.hourly_price.present? %>
+      <p><strong>Hourly Price:</strong> <%= number_to_currency(@job.hourly_price) %></p>
+    <% end %>
+
+    <% if @job.price_per_m2.present? %>
+      <p><strong>Price per m²:</strong> <%= number_to_currency(@job.price_per_m2) %></p>
+    <% end %>
+
+    <% if @job.image.attached? %>
+      <div class="job-image mb-3">
+        <%= image_tag @job.image, class: "img-fluid rounded shadow" %>
+      </div>
+    <% end %>
+
+    <p class="text-muted"><strong>Posted by:</strong> <%= @job.user.name %></p>
+
+    <div class="mt-auto d-flex flex-column gap-2 align-items-center">
+      <% if current_user == @job.user %>
+        <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-primary w-100 custom-width" %>
+        <%= link_to 'Delete', job_path(@job), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger w-100 custom-width" %>
+      <% end %>
+      <%= link_to 'Back to Job Listings', jobs_path, class: "btn btn-outline-secondary w-100 custom-width" %>
+    </div>
+  </div>
+</div>
+
+<!-- Footer Section (outside the job-ad div) -->

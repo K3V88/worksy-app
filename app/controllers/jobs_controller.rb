@@ -9,6 +9,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/:id
   def show
+    @job = Job.find(params[:id])
   end
 
   # GET /jobs/new
@@ -18,12 +19,12 @@ class JobsController < ApplicationController
 
   # POST /jobs
   def create
-    @job = current_user.jobs.build(job_params)
-    if @job.save
-      redirect_to @job, notice: "Job was successfully created."
-    else
-      render :new
-    end
+  @job = current_user.jobs.build(job_params)
+  if @job.save
+    redirect_to jobs_path, notice: "Job was successfully created."
+  else
+    render :new
+  end
   end
 
   # GET /jobs/:id/edit
@@ -41,8 +42,12 @@ class JobsController < ApplicationController
 
   # DELETE /jobs/:id
   def destroy
+  if @job.user == current_user
     @job.destroy
     redirect_to jobs_url, notice: "Job was successfully destroyed."
+  else
+    redirect_to jobs_url, alert: "You are not authorized to delete this job."
+  end
   end
 
   private
@@ -53,6 +58,6 @@ class JobsController < ApplicationController
 
     # Strong parameters for job creation
     def job_params
-      params.require(:job).permit(:title, :description)
+    params.require(:job).permit(:title, :description, :location, :hourly_price, :price_per_m2, :image)
     end
 end
