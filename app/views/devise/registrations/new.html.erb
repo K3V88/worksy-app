@@ -24,11 +24,11 @@
     </div>
 
     <div class="form-group">
-      <%= form.label :role, t("signup.role_label") %>
-      <%= form.select :role, [
-        t("signup.role_customer"),
-        t("signup.role_provider")
-      ], {}, class: "role-select form-control" %>
+      <%= form.label :clienttype, t("signup.clienttype_label") %>
+      <%= form.select :clienttype, [
+        t("signup.clienttype_customer"),
+        t("signup.clienttype_provider")
+      ], {}, class: "clienttype-select form-control" %>
     </div>
 
     <div class="form-group" id="category-group" style="display: none;">
@@ -55,19 +55,19 @@
 </div>
 
 <script>
-  // Show/hide category dropdown based on selected role
+  // Show/hide category dropdown based on selected clienttype
   document.addEventListener("DOMContentLoaded", () => {
-    const roleSelect = document.querySelector(".role-select");
+    const clienttypeSelect = document.querySelector(".clienttype-select");
     const categoryGroup = document.getElementById("category-group");
 
-    if (roleSelect && categoryGroup) {
+    if (clienttypeSelect && categoryGroup) {
       const toggleCategory = () => {
-        const providerText = "<%= j t('signup.role_provider') %>";
-        categoryGroup.style.display = roleSelect.value === providerText ? "block" : "none";
+        const providerText = "<%= j t('signup.clienttype_provider') %>";
+        categoryGroup.style.display = clienttypeSelect.value === providerText ? "block" : "none";
       };
 
       toggleCategory();
-      roleSelect.addEventListener("change", toggleCategory);
+      clienttypeSelect.addEventListener("change", toggleCategory);
     }
   });
 </script>

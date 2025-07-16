@@ -4,7 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :role, presence: true
+  validates :clienttype, presence: true
   has_many :jobs, dependent: :destroy
 
   # Devise handles password presence and length validation
