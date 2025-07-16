@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     root "home#index"
     get "home/index", to: "home#index"
     resources :jobs
-  # Resources
-  resources :users do
+    # Resources
+    resources :users do
     resources :jobs, only: [ :index ], controller: "user_jobs"
 
     get "sessions/new"
