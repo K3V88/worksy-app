@@ -16,14 +16,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(
-      :name,
-      :email,
-      :password,
-      :password_confirmation,
-      :role,
-      :category,
-      :custom_category
-    )
+    # Permit role only in certain cases, like in the update action (if you later add that functionality)
+    if action_name == "create"
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :category, :custom_category)
+    else
+      # If you plan to allow role updates later, you can add the `role` here when updating an existing user
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, :category, :custom_category)
+    end
   end
 end
