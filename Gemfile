@@ -7,7 +7,7 @@ gem "psych", "~> 5.2", ">= 5.2.6"
 gem "irb", "~> 1.15", ">= 1.15.2"
 gem "rdoc", "~> 6.14", ">= 6.14.2"
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.6"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
